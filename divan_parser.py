@@ -30,9 +30,11 @@ with open('output.csv', mode='w', newline='', encoding='utf-8') as file:
             else:
                 price = "Цена не найдена"
 
+            # Формируем HTML-ссылку
             image_url = product.find_element(By.CSS_SELECTOR, 'a.ui-GPFV8').get_attribute('href')
+            clickable_url = f'=HYPERLINK("{image_url}", "{image_url}")'
 
-            writer.writerow([name, price, image_url])
+            writer.writerow([name, price, clickable_url])
         except Exception as e:
             print(f"Ошибка при обработке продукта: {e}")
 
